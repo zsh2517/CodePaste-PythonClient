@@ -1,0 +1,2 @@
+# CodePaste-PythonClient
+Python3实现的与CodePaste剪贴板对接的服务。尽可能简化操作
