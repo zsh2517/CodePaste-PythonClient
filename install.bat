@@ -1,15 +1,30 @@
 @echo off
-
-echo CodePasteç¯å¢ƒå®‰è£…
+echo ÇëÉÔµÈÕıÔÚ¼ì²âUACÈ¨ÏŞ
+rd C:\windows\testuac >nul 2>nul
+mkdir C:\windows\testuac 1>nul 2>nul
+set /a err=%errorlevel%
+if "%err%" == "1" (
+    echo ĞèÒªUACÈ¨ÏŞ²ÅÄÜÔËĞĞ
+    echo ÇëÖØĞÂÒÔ¹ÜÀíÔ±È¨ÏŞÔËĞĞ
+    echo °´ÈÎÒâ¼üÍË³ö
+    pause>nul
+    exit
+)
+rd C:\windows\testuac >nul 2>nul
+echo ±¾³ÌĞòÕıÔÚÒÔUACÈ¨ÏŞÔËĞĞ
 echo.
-echo 0. å®‰è£…ä¾èµ–åº“
-echo 1. å®‰è£…ç¯å¢ƒ
-echo 2. åˆ é™¤ç¯å¢ƒ
-set /p choice=è¯·è¾“å…¥:
+echo codepaste»·¾³°²×°
+echo ver2.0
+echo.
+echo 0. °²×°ÒÀÀµ¿â
+echo 1. °²×°»·¾³
+echo 2. É¾³ı»·¾³
+echo 9. É¾³ı¾É°æ»·¾³
+set /p choice=ÇëÊäÈë:
 goto menu%choice%
 :menu0
-echo æ ¹æ®è‡ªå·±æƒ…å†µç›´æ¥å¤åˆ¶å®‰è£…å³å¯
-echo ä½¿ç”¨åˆ°äº†ä»¥ä¸‹åº“
+echo ¸ù¾İ×Ô¼ºÇé¿öÖ±½Ó¸´ÖÆ°²×°¼´¿É
+echo Ê¹ÓÃµ½ÁËÒÔÏÂ¿â
 echo.
 echo os
 echo requests
@@ -32,26 +47,33 @@ echo pip3 install html
 echo pip3 install pyperclip
 echo pip3 install chardet
 echo.
-echo å®‰è£…å®Œæˆä¹‹åä»»æ„é”®ç»§ç»­å³å¯
+echo °²×°Íê³ÉÖ®ºóÈÎÒâ¼ü¼ÌĞø¼´¿É
 pause>nul
 :menu1
-echo å¦‚æœä¸èƒ½æ‹–åŠ¨è¯·ç²˜è´´
-set /p pyexe=è¯·æ‹–å…¥python3çš„å¯æ‰§è¡Œç¨‹åº
-set /p pyprogram=è¯·æ‹–å…¥Paste.py
-echo y|reg add HKEY_CLASSES_ROOT\.CodePaste /ve /d ".Paste CodePaste File"
-echo y|reg add HKEY_CLASSES_ROOT\.CodePaste\ShellNew /ve
-echo y|reg add HKEY_CLASSES_ROOT\.CodePaste\ShellNew /v Command /d "\"%pyexe%\" \"%pyprogram%\" -c \"%%1\""
-echo y|reg add HKEY_CLASSES_ROOT\.CodePaste\ShellNew /v FileNull
-echo ç”±äºç¨‹åºä¸èƒ½åˆ›å»ºå¿«æ·æ–¹å¼ï¼Œè¯·æ ¹æ®ä¸‹åˆ—ä»‹ç»æ‰‹åŠ¨åˆ›å»º
-echo æ­£åœ¨æ‰“å¼€ç›®å½•%appdata%\Microsoft\Windows\SendTo
+echo Èç¹û²»ÄÜÍÏ¶¯ÇëÕ³Ìù
+REM set /p pyexe=ÇëÍÏÈëpython3µÄ¿ÉÖ´ĞĞ³ÌĞò
+set pyexe=C:\Program Files\Python38\python.exe
+set /p pyprogram=ÇëÍÏÈëPaste.py
+echo y|reg add HKEY_CLASSES_ROOT\.codepaste /ve /d ".Paste codepaste File"
+echo y|reg add HKEY_CLASSES_ROOT\.codepaste\ShellNew /ve
+echo y|reg add HKEY_CLASSES_ROOT\.codepaste\ShellNew /v Command /d "\"%pyexe%\" \"%pyprogram%\" -g -q -f \"%%1\""
+echo y|reg add HKEY_CLASSES_ROOT\.codepaste\ShellNew /v FileNull
+echo ÓÉÓÚ³ÌĞò²»ÄÜ´´½¨¿ì½İ·½Ê½£¬Çë¸ù¾İÏÂÁĞ½éÉÜÊÖ¶¯´´½¨
+echo ÕıÔÚ´ò¿ªÄ¿Â¼%appdata%\Microsoft\Windows\SendTo
 start "" "%appdata%\Microsoft\Windows\SendTo"
-echo è¯·å¤åˆ¶ä¸‹é¢çš„ä¸œè¥¿ï¼Œç„¶åæ–°å»ºä¸€ä¸ªå¿«æ·æ–¹å¼
-echo ^"%pyexe%^" ^"%pyprogram%^" -pauto
-echo æ–‡ä»¶åå†™å‘é€åˆ°Pasteä¹‹ç±»çš„ä¸œè¥¿
-REM "C:\Program Files\Python38\python.exe" C:\Users\zsh2517\project\CodePaste\Paste.py -pauto
+echo Çë¸´ÖÆÏÂÃæµÄ¶«Î÷£¬È»ºóĞÂ½¨Ò»¸ö¿ì½İ·½Ê½
+echo ^"%pyexe%^" ^"%pyprogram%^" -s -q -f
+echo ÎÄ¼şÃûĞ´·¢ËÍµ½PasteÖ®ÀàµÄ¶«Î÷
+REM "C:\Program Files\Python38\python.exe" C:\Users\zsh2517\project\codepaste\Paste.py -pauto
 pause
 exit
 :menu2
-echo yes | reg delete HKCR\.CodePaste
+echo yes | reg delete HKCR\.codepaste
 pause
 exit
+:menu9
+REM echo reg delete HKCR\.CodePastt
+echo yes | reg delete HKCR\.CodePastt
+REM echo reg delete HKCR\.codepaste
+echo yes | reg delete HKCR\.codepaste
+pause

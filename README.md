@@ -1,2 +1,4 @@
 # CodePaste-PythonClient
 Python3实现的与CodePaste剪贴板对接的服务。尽可能简化操作
+目前做到的是右键发送到Paste以及新建一个Paste文件（提供URL，类似于粘贴）
+后面考虑进一步整合到系统右键菜单中。
